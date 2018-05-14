@@ -1,0 +1,6 @@
+onOpen: (secID, rowId, direction) => {
+            this.setState ({activeRowKey: this.props.item.key})
+            const deletingRow = this.state.activeRowKey
+            HomeData.splice(this.props.index,1)
+            this.props.parentFlatList.refreshFlatList()
+          }
