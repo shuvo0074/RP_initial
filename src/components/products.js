@@ -4,7 +4,7 @@ import { Actions} from 'react-native-router-flux'
 import Swipeout from 'react-native-swipeout'
 import HomeData from '../data/homeData'
 
-export default class home extends React.Component {
+export default class products extends React.Component {
   constructor (props){
     super(props)
     this.state = ({
@@ -14,28 +14,8 @@ export default class home extends React.Component {
   refreshFlatList = (deletedKey) => {
     this.setState ((prevState) => {
       return{
-        deletedRowKey: deletedKey
       }
     })
-  }
-
-  onPressProductsButton(){
-    Actions.products()
-  }
-  onPressDigSysButton(){
-    Actions.digSystem()
-  }
-  onPressQuizButton(){
-    Actions.quiz()
-  }
-  onPressContactButton(){
-    Actions.contact()
-  }
-  onPressAboutButton(){
-    Actions.about()
-  }
-  onPressHelpButton(){
-    Actions.help()
   }
 
   render() {
