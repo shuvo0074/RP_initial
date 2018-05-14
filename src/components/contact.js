@@ -13,11 +13,53 @@ export default class about extends React.Component {
     this.state = ({
     })
   }
+  callNumber() {
+    Call.callNumber(()=>{
+      }, ()=>{},
+      "+880029123560",
+      true,
+    );
+  }
+  handleEmail = () => {
+    const to = ['info@era.com.bd', 'info@era.com.bd'] 
+    email(to, {
+        cc: ['info@era.com.bd', 'info@era.com.bd'],
+        bcc: 'info@era.com.bd',
+        subject: 'Email',
+        body: 'Some body right here'
+    }).catch(console.error)
+}
 
   render() {
     return (
 
       <ScrollView contentContainerStyle={styles.container}>
+      
+      <View style={[styles.header,{backgroundColor: 'red'}]} >
+      <Text style={styles.headerFonts}>
+        Head Office
+      </Text>
+      </View>
+
+      <Text style={styles.headerFonts}>
+      Rangs Pharmaceuticals Limited
+      </Text>
+      <Text>
+        Rangs Bhaban (Level-5),117/a,
+        Bijoy Sharani,
+        Old Airport Road, Tejgaon,
+        Dhaka-1215,Bangladesh.
+        Contact to HR and Admin:
+
+      </Text>
+
+      <Button title="info@rangspharma.net" onPress={this.handleEmail} />
+
+
+      <Button onPress={this.callNumber}>
+            +880-02-9123560
+      </Button>
+
       <MapView
       style={styles.map}
       region={{
@@ -84,5 +126,13 @@ const styles = StyleSheet.create({
       color: '#27ae60',
       fontSize: 15,
       paddingLeft: 10,
-    }
+    },
+    header: {
+      alignItems: 'center',
+    },
+    headerFonts: {
+      fontSize: 20,
+      fontWeight: 'bold',
+      padding: 10
+    },
 });
