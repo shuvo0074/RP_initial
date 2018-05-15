@@ -1,6 +1,52 @@
-onOpen: (secID, rowId, direction) => {
-            this.setState ({activeRowKey: this.props.item.key})
-            const deletingRow = this.state.activeRowKey
-            HomeData.splice(this.props.index,1)
-            this.props.parentFlatList.refreshFlatList()
-          }
+<MapView.Marker
+          coordinate={{
+            latitude: 23.764785,
+            longitude:90.389719
+          }}
+          title={'title'}
+          description={'description'}
+        />
+
+
+from contatc.js
+         <View>
+      <View style={[styles.header,{backgroundColor: 'red'}]} >
+      <Text style={styles.headerFonts}>
+        Head Office
+      </Text>
+      </View>
+
+      <Text style={styles.headerFonts}>
+      Rangs Pharmaceuticals Limited
+      </Text>
+      <Text>
+        Rangs Bhaban (Level-5),117/a,
+        Bijoy Sharani,
+        Old Airport Road, Tejgaon,
+        Dhaka-1215,Bangladesh.
+        Contact to HR and Admin:
+
+      </Text>
+
+      <Button title="info@rangspharma.net" onPress={this.handleEmail} />
+
+
+      <Button onPress={this.callNumber}>
+            +880-02-9123560
+      </Button>
+
+      <MapView
+      style={styles.map}
+      region={{
+          latitude: 23.764785,
+          longitude:90.389719,
+          latitudeDelta:0.1,
+          longitudeDelta:0.1
+      }}
+      >
+        
+        </MapView>
+        </View>
+
+        from about
+        

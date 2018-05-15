@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity,FlatList,Dimensions,Image,Alert,TouchableHighlight } from 'react-native';
 import { Actions} from 'react-native-router-flux'
 import Swipeout from 'react-native-swipeout'
-import HomeData from '../data/homeData'
+import ProductData from '../data/productData'
 
 export default class products extends React.Component {
   constructor (props){

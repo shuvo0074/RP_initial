@@ -2,12 +2,13 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity,FlatList,Dimensions,Image,Alert,TouchableHighlight,ScrollView } from 'react-native';
 import { Actions} from 'react-native-router-flux'
 import { Button } from 'react-native-elements';
-import { MapView } from 'react-native-maps';
+import { MapView,Marker } from 'react-native-maps';
+import email from 'react-native-email';
 
-var Button = require('@remobile/react-native-simple-button');
+
 var Call = require('@remobile/react-native-call');
 
-export default class about extends React.Component {
+export default class contact extends React.Component {
   constructor (props){
     super(props)
     this.state = ({
@@ -32,52 +33,47 @@ export default class about extends React.Component {
 
   render() {
     return (
+      <ScrollView contentContainerStyle={styles.container} >
+        <View style={[styles.header,{backgroundColor: 'red'}]} >
+          <Text style={styles.headerFonts}>
+            Head Office
+          </Text>
+        </View>
+        <Text style={styles.headerFonts}>
+          Rangs Pharmaceuticals Limited
+        </Text>
+        <Text>
+          Rangs Bhaban (Level-5),117/a,
+          Bijoy Sharani,
+          Old Airport Road, Tejgaon,
+          Dhaka-1215,Bangladesh.
+          Contact to HR and Admin:
+        </Text>
+        <Button title="info@rangspharma.net" onPress={this.handleEmail} />
 
-      <ScrollView contentContainerStyle={styles.container}>
-      
-      <View style={[styles.header,{backgroundColor: 'red'}]} >
-      <Text style={styles.headerFonts}>
-        Head Office
-      </Text>
-      </View>
-
-      <Text style={styles.headerFonts}>
-      Rangs Pharmaceuticals Limited
-      </Text>
-      <Text>
-        Rangs Bhaban (Level-5),117/a,
-        Bijoy Sharani,
-        Old Airport Road, Tejgaon,
-        Dhaka-1215,Bangladesh.
-        Contact to HR and Admin:
-
-      </Text>
-
-      <Button title="info@rangspharma.net" onPress={this.handleEmail} />
-
-
-      <Button onPress={this.callNumber}>
+        <Button onPress={this.callNumber}>
             +880-02-9123560
-      </Button>
+        </Button>
 
-      <MapView
+        <MapView
       style={styles.map}
       region={{
-          latitude: 59.3293234999999,
-          longitude:18.068580800000063,
+          latitude: 23.764785,
+          longitude:90.389719,
           latitudeDelta:0.1,
           longitudeDelta:0.1
       }}
       >
-        <MapView.Marker
+        <Marker
           coordinate={{
-            latitude: 59.3293234999999,
-            longitude:18.068580800000063
+            latitude: 23.764785,
+            longitude:90.389719
           }}
           title={'title'}
           description={'description'}
         />
         </MapView>
+
       </ScrollView>
     );
   }
@@ -90,6 +86,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     alignItems: 'center',
+    marginTop: 20
   },
   header: {
     alignItems: 'center',
@@ -135,4 +132,7 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       padding: 10
     },
+    map: {
+      height: 400
+    }
 });

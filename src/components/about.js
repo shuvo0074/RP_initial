@@ -2,8 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity,FlatList,Dimensions,Image,Alert,TouchableHighlight,ScrollView } from 'react-native';
 import { Actions} from 'react-native-router-flux'
 import { Button } from 'react-native-elements';
+import email from 'react-native-email';
 
-var Button = require('@remobile/react-native-simple-button');
+
 var Call = require('@remobile/react-native-call');
 
 export default class about extends React.Component {

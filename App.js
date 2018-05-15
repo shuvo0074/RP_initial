@@ -10,11 +10,11 @@ import Home from './src/components/home'
 import Products from './src/components/products'
 import DigSystem from './src/components/digSystem'
 import Quiz from './src/components/quiz'
-import Contact from './src/components/contatc'
+import Contact from './src/components/contact'
 import About from './src/components/about'
 import Help from './src/components/help'
 
-export default class App extends Component {
+export default class App extends Component<{}> {
   render() {
     return (
       <Router>
@@ -46,9 +46,9 @@ export default class App extends Component {
       />
       
       <Scene
-      key="contatc"
+      key="contact"
       component={Contact}
-      title="contatc"
+      title="contact"
       />
 
       <Scene
