@@ -1,6 +1,8 @@
 import React from 'react';
 import { View,Text, StyleSheet, Dimensions } from 'react-native';
 import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
+import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+
 
 class QuizComponent extends React.Component {
     constructor (props){
