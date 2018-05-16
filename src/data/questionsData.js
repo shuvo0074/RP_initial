@@ -1,46 +1,54 @@
-var imSourcea1= require('../contents/med.png')
-var imSourcea2= require('../contents/med.png')
-var imSourcea3= require('../contents/med.png')
-var imSourcea4= require('../contents/med.png')
-var imSourcea5= require('../contents/med.png')
-var imSourcea6= require('../contents/med.png')
-
-var homeData = [
+var QuizQData = [
     {
         "key":"a1",
-        "name":"Products",
-        "logo": imSourcea1 ,
-        "desc":"All products of Rangs Pharmaceuticals limited."
+        "ques":"Quiz q 1 ?",
+        "op1":"All products of Rangs Pharmaceuticals limited.",
+        "op2":"All products of Rangs Pharmaceuticals limited.",
+        "op3":"All products of Rangs Pharmaceuticals limited.",
+        "op4":"All products of Rangs Pharmaceuticals limited.",
+        "correctOp": 1
+
     },
     {
         "key":"a2",
-        "name":"Digestive system",
-        "logo": imSourcea2 ,
-        "desc":"Human digestive system"
+        "ques":"Quiz q 1 ?",
+        "op1":"All products of Rangs Pharmaceuticals limited.",
+        "op2":"All products of Rangs Pharmaceuticals limited.",
+        "op3":"All products of Rangs Pharmaceuticals limited.",
+        "op4":"All products of Rangs Pharmaceuticals limited.",
+        "correctOp": 1
+
     },
     {
         "key":"a3",
-        "name":"Quiz",
-        "logo": imSourcea3 ,
-        "desc":"Overall quiz"
+        "ques":"Quiz q 1 ?",
+        "op1":"All products of Rangs Pharmaceuticals limited.",
+        "op2":"All products of Rangs Pharmaceuticals limited.",
+        "op3":"All products of Rangs Pharmaceuticals limited.",
+        "op4":"All products of Rangs Pharmaceuticals limited.",
+        "correctOp": 1
+
     },
     {
         "key":"a4",
-        "name":"Contact",
-        "logo": imSourcea4 ,
-        "desc":"Contact info of Rangs Pharmaceuticals limited"
+        "ques":"Quiz q 1 ?",
+        "op1":"All products of Rangs Pharmaceuticals limited.",
+        "op2":"All products of Rangs Pharmaceuticals limited.",
+        "op3":"All products of Rangs Pharmaceuticals limited.",
+        "op4":"All products of Rangs Pharmaceuticals limited.",
+        "correctOp": 1
+
     },
     {
         "key":"a5",
-        "name":"About",
-        "logo": imSourcea5 ,
-        "desc":"Know about this app"
+        "ques":"Quiz q 1 ?",
+        "op1":"All products of Rangs Pharmaceuticals limited.",
+        "op2":"All products of Rangs Pharmaceuticals limited.",
+        "op3":"All products of Rangs Pharmaceuticals limited.",
+        "op4":"All products of Rangs Pharmaceuticals limited.",
+        "correctOp": 1
+
     },
-    {
-        "key":"a6",
-        "name":"Help",
-        "logo": imSourcea6 ,
-        "desc":"Help about this app"
-    },    
+    
 ]
-export default homeData;
+export default QuizQData;

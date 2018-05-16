@@ -1,6 +1,7 @@
 import React from 'react';
 import { View,Text, StyleSheet, Dimensions } from 'react-native';
 import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
+import QCard from './qCard'
 
 const initialLayout = {
   height: 0,
@@ -8,7 +9,9 @@ const initialLayout = {
 };
 
 const FirstRoute = () => <View style={[ styles.container, { backgroundColor: 'white' } ]} />;
-const SecondRoute = () => <View style={[ styles.container, { backgroundColor: 'white' } ]} />;
+const SecondRoute = () => <View style={[ styles.container, { backgroundColor: 'white' } ]} >
+<QCard/>
+</View>
 const ThirdRoute = () => <View style={[ styles.container, { backgroundColor: 'white' } ]} />;
 
 export default class digSystem extends React.Component {
@@ -45,7 +48,6 @@ export default class digSystem extends React.Component {
         onIndexChange={this._handleIndexChange}
         initialLayout={initialLayout}
     >
-    jdjkkjkjllkjsdjk
     </TabViewAnimated>
     </View>
     );

@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, TouchableOpacity,FlatList,Dimensions,Image,Aler
 import { Actions} from 'react-native-router-flux'
 import Swipeout from 'react-native-swipeout'
 import ProductData from '../data/productData'
+import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
+import QCard from './qCard'
 
 export default class products extends React.Component {
   constructor (props){
@@ -21,10 +23,8 @@ export default class products extends React.Component {
   render() {
     return (
 
-      <View style={styles.container}>
-
-        
-        
+      <View style={styles.container}>        
+        <QCard/>
       </View>
     );
   }
@@ -34,9 +34,7 @@ let W=Dimensions.get('window').width
 
 const styles = StyleSheet.create({
   container: {
-    flex: 2,
-    alignItems: 'center',
-    marginTop: 40,
+    flex:1,
     backgroundColor: 'white'
   },
   list: {
