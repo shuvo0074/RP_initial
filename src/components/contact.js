@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity,FlatList,Dimensions,Image,Alert,TouchableHighlight,ScrollView } from 'react-native';
 import { Actions} from 'react-native-router-flux'
 import { Button } from 'react-native-elements';
-import { MapView,Marker } from 'react-native-maps';
+import MapView from 'react-native-maps';
 import email from 'react-native-email';
 
 
@@ -54,17 +54,16 @@ export default class contact extends React.Component {
         <Button onPress={this.callNumber}>
             +880-02-9123560
         </Button>
-
-        <MapView
-      style={styles.map}
-      region={{
+      <MapView
+          style={styles.map}
+          initialRegion={{
           latitude: 23.764785,
           longitude:90.389719,
           latitudeDelta:0.1,
           longitudeDelta:0.1
       }}
-      >
-        <Marker
+        >
+        <MapView.Marker
           coordinate={{
             latitude: 23.764785,
             longitude:90.389719
@@ -73,7 +72,6 @@ export default class contact extends React.Component {
           description={'description'}
         />
         </MapView>
-
       </ScrollView>
     );
   }
@@ -83,10 +81,18 @@ let W=Dimensions.get('window').width
 
 const styles = StyleSheet.create({
   container: {
+    position: 'absolute',
     flex: 1,
     backgroundColor: 'white',
     alignItems: 'center',
-    marginTop: 20
+    marginTop: 20,
+    top:0,
+    left:0,
+    bottom:0,
+    right:0,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+
   },
   header: {
     alignItems: 'center',
@@ -133,6 +139,11 @@ const styles = StyleSheet.create({
       padding: 10
     },
     map: {
-      height: 400
+    position: 'absolute',
+    top:0,
+    left:0,
+    bottom:0,
+    right:0,
+    justifyContent: 'flex-end',
     }
 });
