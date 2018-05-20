@@ -37,6 +37,7 @@
     "react-native-modalbox": "^1.4.2",
     "react-native-router-flux": "^4.0.0-beta.28",
     "react-native-simple-radio-button": "^2.7.1",
+    "react-native-sqlite-storage": "^3.3.4",
     "react-native-swipeout": "^2.3.3",
     "react-native-tab-view": "0.0.77"
   }
