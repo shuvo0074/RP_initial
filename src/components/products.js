@@ -6,6 +6,36 @@ import ProductData from '../data/productData'
 import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
 import QCard from './qCard'
 
+class ProductsComponent extends React.Component {
+  constructor (props){
+    super(props)
+    this.state = ({
+    })
+  }
+  render(){
+    return(
+      <TouchableOpacity
+      onPress={()=>{
+        return(
+          
+        )
+      }}
+      >
+      <View style={[ styles.contentStyle, { width: this.state.W -10, } ]}>
+        <Image 
+        source={require('../contents/med.png')} 
+        style= {{height: 70, width: 70, margin: 10, padding: 5,}}
+        />
+        <View style={{width: this.state.W-110}} >
+          <Text style={styles.listItemFonts}>Contact</Text>
+          <Text>Contact info of Rangs Pharmaceuticals limited</Text>
+        </View>
+      </View>
+      </TouchableOpacity>
+    )
+  }
+}
+
 export default class products extends React.Component {
   constructor (props){
     super(props)
@@ -13,18 +43,24 @@ export default class products extends React.Component {
     })
   }
 
-  refreshFlatList = (deletedKey) => {
-    this.setState ((prevState) => {
-      return{
-      }
-    })
-  }
-
   render() {
     return (
 
       <View style={styles.container}>        
-        <QCard/>
+        <Text>
+        {ProductData[1].name}
+        </Text>
+        <FlatList style={styles.list}
+        data={ProductData}
+        ref={'flist'}
+        renderItem={({item,index})=>
+        {
+            return (
+                <ProductsComponent item={item} index={index} parentFlatList = {this} ></ProductsComponent>
+            )
+        }}
+        >
+        </FlatList>
       </View>
     );
   }
