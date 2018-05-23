@@ -2,17 +2,10 @@ import React from 'react';
 import { View,Text, StyleSheet, Dimensions } from 'react-native';
 import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
-var FireBase = require('firebase')
 
 class QuizComponent extends React.Component {
     constructor (props){
         super(props)
-        var fireBaseConnection = new FireBase('https://rangspharma-9120d.firebaseio.com/')
-        fireBaseConnection.set ({
-          FName: 'me',
-          LNmae: 'mee',
-          
-        })
         this.state = ({
         })
       }

@@ -10,6 +10,12 @@ class ProductsComponent extends React.Component {
   constructor (props){
     super(props)
     this.state = ({
+      W: Dimensions.get('window').width
+    })
+    Dimensions.addEventListener('change', () => {
+      this.setState({
+      W: Dimensions.get('window').width
+    })
     })
   }
   render(){
@@ -17,7 +23,7 @@ class ProductsComponent extends React.Component {
       <TouchableOpacity
       onPress={()=>{
         return(
-          
+          <QCard/>
         )
       }}
       >
@@ -27,8 +33,8 @@ class ProductsComponent extends React.Component {
         style= {{height: 70, width: 70, margin: 10, padding: 5,}}
         />
         <View style={{width: this.state.W-110}} >
-          <Text style={styles.listItemFonts}>Contact</Text>
-          <Text>Contact info of Rangs Pharmaceuticals limited</Text>
+          <Text style={styles.listItemFonts}>{this.props.item.name}</Text>
+          <Text>{this.props.item.desc}</Text>
         </View>
       </View>
       </TouchableOpacity>
@@ -40,17 +46,23 @@ export default class products extends React.Component {
   constructor (props){
     super(props)
     this.state = ({
+      W: Dimensions.get('window').width
+    })
+    Dimensions.addEventListener('change', () => {
+      this.setState({
+      W: Dimensions.get('window').width
+    })
     })
   }
 
   render() {
     return (
 
-      <View style={styles.container}>        
+      <View style={[styles.container,{width: this.state.W}]}>        
         <Text>
         {ProductData[1].name}
         </Text>
-        <FlatList style={styles.list}
+        <FlatList style={[styles.list,{width: this.state.W,}]}
         data={ProductData}
         ref={'flist'}
         renderItem={({item,index})=>
@@ -65,17 +77,15 @@ export default class products extends React.Component {
     );
   }
 }
-let H=Dimensions.get('window').height
-let W=Dimensions.get('window').width
 
 const styles = StyleSheet.create({
   container: {
     flex:1,
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    marginTop: 22,
   },
   list: {
     flex: 1,
-    width: W,
     backgroundColor: 'white',
   },
   listItemFonts: {
@@ -106,5 +116,13 @@ const styles = StyleSheet.create({
       color: '#27ae60',
       fontSize: 15,
       paddingLeft: 10,
-    }
+    },
+    contentStyle:{
+      backgroundColor : 'white',
+      flexDirection: 'row',
+      borderRadius: 12,
+      borderWidth:2,
+      borderColor: '#aaa69d',
+      margin: 3,
+    },
 });
