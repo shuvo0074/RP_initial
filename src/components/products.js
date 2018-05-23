@@ -5,12 +5,13 @@ import Swipeout from 'react-native-swipeout'
 import ProductData from '../data/productData'
 import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
 import QCard from './qCard'
+import TabView from './tabView'
 
 class ProductsComponent extends React.Component {
   constructor (props){
     super(props)
     this.state = ({
-      W: Dimensions.get('window').width
+      W: Dimensions.get('window').width,
     })
     Dimensions.addEventListener('change', () => {
       this.setState({
@@ -20,13 +21,7 @@ class ProductsComponent extends React.Component {
   }
   render(){
     return(
-      <TouchableOpacity
-      onPress={()=>{
-        return(
-          <QCard/>
-        )
-      }}
-      >
+      
       <View style={[ styles.contentStyle, { width: this.state.W -10, } ]}>
         <Image 
         source={this.props.item.imageS}
@@ -38,7 +33,6 @@ class ProductsComponent extends React.Component {
           <Text>{this.props.item.desc}</Text>
         </View>
       </View>
-      </TouchableOpacity>
     )
   }
 }
@@ -47,7 +41,8 @@ export default class products extends React.Component {
   constructor (props){
     super(props)
     this.state = ({
-      W: Dimensions.get('window').width
+      W: Dimensions.get('window').width,
+      desc: false
     })
     Dimensions.addEventListener('change', () => {
       this.setState({
@@ -57,6 +52,12 @@ export default class products extends React.Component {
   }
 
   render() {
+    if (this.state.desc) {
+      return (
+        <TabView/>
+      )
+    }
+    
     return (
 
       <View style={[styles.container,{width: this.state.W}]}>        
@@ -69,7 +70,13 @@ export default class products extends React.Component {
         renderItem={({item,index})=>
         {
             return (
+              <TouchableOpacity
+              onPress={()=>{
+              this.setState({desc: true})
+              }}
+              >
                 <ProductsComponent item={item} index={index} parentFlatList = {this} ></ProductsComponent>
+              </TouchableOpacity>
             )
         }}
         >
