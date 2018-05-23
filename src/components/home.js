@@ -63,7 +63,7 @@ export default class home extends React.Component {
       >
       <View style={[ styles.contentStyle, { width: this.state.W -10, } ]}>
         <Image 
-        source={require('../contents/med.png')} 
+        source={require('../contents/menuPictures/products.png')} 
         style= {{height: 70, width: 70, margin: 10, padding: 5,}}
         />
         <View style={{width: this.state.W-110}} >
@@ -78,7 +78,7 @@ export default class home extends React.Component {
       >
       <View style={[ styles.contentStyle, { width: this.state.W -10, } ]}>
         <Image 
-        source={require('../contents/med.png')} 
+        source={require('../contents/menuPictures/dig_system.png')} 
         style= {{height: 70, width: 70, margin: 10, padding: 5,}}
         />
         <View style={{width: this.state.W-110}} >
@@ -93,7 +93,7 @@ export default class home extends React.Component {
       >
       <View style={[ styles.contentStyle, { width: this.state.W -10, } ]}>
         <Image 
-        source={require('../contents/med.png')} 
+        source={require('../contents/menuPictures/quiz.png')} 
         style= {{height: 70, width: 70, margin: 10, padding: 5,}}
         />
         <View style={{width: this.state.W-110}} >
@@ -108,7 +108,7 @@ export default class home extends React.Component {
       >
       <View style={[ styles.contentStyle, { width: this.state.W -10, } ]}>
         <Image 
-        source={require('../contents/med.png')} 
+        source={require('../contents/menuPictures/contact.png')} 
         style= {{height: 70, width: 70, margin: 10, padding: 5,}}
         />
         <View style={{width: this.state.W-110}} >
@@ -123,7 +123,7 @@ export default class home extends React.Component {
       >
       <View style={[ styles.contentStyle, { width: this.state.W -10, } ]}>
         <Image 
-        source={require('../contents/med.png')} 
+        source={require('../contents/menuPictures/about.png')} 
         style= {{height: 70, width: 70, margin: 10, padding: 5,}}
         />
         <View style={{width: this.state.W-110}} >
@@ -138,7 +138,7 @@ export default class home extends React.Component {
       >
       <View style={[ styles.contentStyle, { width: this.state.W -10, } ]}>
         <Image 
-        source={require('../contents/med.png')} 
+        source={require('../contents/menuPictures/help.png')} 
         style= {{height: 70, width: 70, margin: 10, padding: 5,}}
         />
         <View style={{width: this.state.W-110}} >
