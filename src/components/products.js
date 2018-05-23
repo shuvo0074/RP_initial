@@ -30,10 +30,10 @@ class ProductsComponent extends React.Component {
       <View style={[ styles.contentStyle, { width: this.state.W -10, } ]}>
         <Image 
         source={this.props.item.imageS}
-        resizeMethod='resize'
-        style= {{height: 70, width: 100, margin: 10, padding: 5,}}
+        resizeMethod='scale'
+        style= {{height: 70, width: 120, margin: 5, }}
         />
-        <View style={{width: this.state.W-110}} >
+        <View style={{width: this.state.W-120}} >
           <Text style={styles.listItemFonts}>{this.props.item.name}</Text>
           <Text>{this.props.item.desc}</Text>
         </View>
