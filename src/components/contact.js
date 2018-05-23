@@ -55,12 +55,12 @@ export default class contact extends React.Component {
             +880-02-9123560
         </Button>
       <MapView
-          style={styles.map}
+          style={[styles.map,{height: 300, width : 350}]}
           initialRegion={{
           latitude: 23.764785,
           longitude:90.389719,
-          latitudeDelta:0.1,
-          longitudeDelta:0.1
+          latitudeDelta:0.01,
+          longitudeDelta:0.01,
       }}
         >
         <MapView.Marker
@@ -81,7 +81,6 @@ let W=Dimensions.get('window').width
 
 const styles = StyleSheet.create({
   container: {
-    position: 'absolute',
     flex: 1,
     backgroundColor: 'white',
     alignItems: 'center',
@@ -90,7 +89,7 @@ const styles = StyleSheet.create({
     left:0,
     bottom:0,
     right:0,
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
     alignItems: 'center',
 
   },
@@ -139,11 +138,7 @@ const styles = StyleSheet.create({
       padding: 10
     },
     map: {
-    position: 'absolute',
-    top:0,
-    left:0,
-    bottom:0,
-    right:0,
     justifyContent: 'flex-end',
+    margin: 15,
     }
 });

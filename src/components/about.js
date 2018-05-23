@@ -66,7 +66,7 @@ export default class about extends React.Component {
         This is a skill building application about Rangs Pharmaceuticals Limited products.
       </Text>
 
-      <View style={[styles.header,{backgroundColor: 'red'}]} >
+      <View style={[styles.header,{backgroundColor: 'green'}]} >
       <Text style={styles.headerFonts}>
       Rangs Pharmaceuticals Limited App
       </Text>
@@ -117,6 +117,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     alignItems: 'center',
+    justifyContent: 'center',
+
   },
   header: {
     alignItems: 'center',
