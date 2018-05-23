@@ -2,6 +2,7 @@ import React from 'react';
 import { View,Text, StyleSheet, Dimensions,Image } from 'react-native';
 import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
 import QCard from './qCard'
+import Quiz from './quiz'
 
 const initialLayout = {
   height: 0,
@@ -12,7 +13,11 @@ const FirstRoute = () => <View style={[ styles.container, { backgroundColor: 'wh
 const SecondRoute = () => <View style={[ styles.container, { backgroundColor: 'white' } ]} >
 <QCard/>
 </View>
-const ThirdRoute = () => <View style={[ styles.container, { backgroundColor: 'white' } ]} />;
+const ThirdRoute = () => 
+<View style={[ styles.container, { backgroundColor: 'white' } ]} >
+<Quiz/>
+</View>
+;
 
 export default class tabView extends React.Component {
   state = {
