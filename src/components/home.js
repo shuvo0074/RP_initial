@@ -53,11 +53,7 @@ export default class home extends React.Component {
   render() {
     return (
     <ScrollView contentContainerStyle={styles.container}>
-    <Text style={styles.buttonFonts}>
-                Dimensions = {JSON.stringify(Dimensions.get('screen'))}{'\n'}
-                isPortrait = {isPortrait() ? 'true\n' : 'false\n'}
-                isLandscape = {isLandscape() ? 'true\n' : 'false\n'}
-            </Text>
+
     <TouchableOpacity
       onPress={this.onPressProductsButton}
       >

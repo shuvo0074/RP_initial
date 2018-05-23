@@ -41,3 +41,10 @@
             +880-02-9123560
         </Button>
       </ScrollView>
+
+from home.js
+      <Text style={styles.buttonFonts}>
+                Dimensions = {JSON.stringify(Dimensions.get('screen'))}{'\n'}
+                isPortrait = {isPortrait() ? 'true\n' : 'false\n'}
+                isLandscape = {isLandscape() ? 'true\n' : 'false\n'}
+            </Text>
