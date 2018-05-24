@@ -1,15 +1,23 @@
 import React from 'react';
-import { View,Text, StyleSheet, Dimensions,Image } from 'react-native';
+import { View,Text, StyleSheet,WebView , Dimensions,Image } from 'react-native';
 import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
 import QCard from './qCard'
 import Quiz from './quiz'
+var disease = require('../contents/htmlpages/ge_system.html')
+
 
 const initialLayout = {
   height: 0,
   width: Dimensions.get('window').width,
 };
+const FirstRoute = () => 
+<View style={[ styles.container, { backgroundColor: 'white' } ]} >
+<WebView
+        source={disease}
+        style={{flex: 1,}}
+      />
+</View>
 
-const FirstRoute = () => <View style={[ styles.container, { backgroundColor: 'white' } ]} />;
 const SecondRoute = () => <View style={[ styles.container, { backgroundColor: 'white' } ]} >
 <QCard/>
 </View>

@@ -41,7 +41,8 @@ export default class digSystem extends React.Component {
     super(props)
     this.state = ({
       W: Dimensions.get('window').width,
-      desc: false
+      desc: false,
+      ind: -1,
     })
     Dimensions.addEventListener('change', () => {
       this.setState({
@@ -53,7 +54,7 @@ export default class digSystem extends React.Component {
   render() {
     if (this.state.desc) {
       return (
-        <TabView/>
+        <TabView id={DigSystemData[this.state.ind].details}/>
       )
     }
     
@@ -72,6 +73,7 @@ export default class digSystem extends React.Component {
               <TouchableOpacity
               onPress={()=>{
               this.setState({desc: true})
+              this.setState({ind: index})
               }}
               >
                 <DigSystemComponent item={item} index={index} parentFlatList = {this} ></DigSystemComponent>

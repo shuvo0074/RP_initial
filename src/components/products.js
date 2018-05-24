@@ -42,7 +42,8 @@ export default class products extends React.Component {
     super(props)
     this.state = ({
       W: Dimensions.get('window').width,
-      desc: false
+      desc: false,
+      ind: -1,
     })
     Dimensions.addEventListener('change', () => {
       this.setState({
@@ -54,7 +55,7 @@ export default class products extends React.Component {
   render() {
     if (this.state.desc) {
       return (
-        <TabView/>
+        <TabView id={ProductData[this.state.ind].details} />
       )
     }
     
@@ -73,6 +74,7 @@ export default class products extends React.Component {
               <TouchableOpacity
               onPress={()=>{
               this.setState({desc: true})
+              this.setState({ind: index})
               }}
               >
                 <ProductsComponent item={item} index={index} parentFlatList = {this} ></ProductsComponent>
