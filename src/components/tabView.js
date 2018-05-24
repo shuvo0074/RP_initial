@@ -5,7 +5,7 @@ import QCard from './qCard'
 import Quiz from './quiz'
 var disease = require('../contents/htmlpages/ge_system.html')
 
-
+var ind = null
 const initialLayout = {
   height: 0,
   width: Dimensions.get('window').width,
@@ -13,7 +13,7 @@ const initialLayout = {
 const FirstRoute = () => 
 <View style={[ styles.container, { backgroundColor: 'white' } ]} >
 <WebView
-        source={disease}
+        source={ind}
         style={{flex: 1,}}
       />
 </View>
@@ -48,6 +48,7 @@ export default class tabView extends React.Component {
   });
 
   render() {
+    ind = this.props.id
     return (
     <View style ={{flex:1}} >
     <View style = {{height : 70,marginTop: 25,backgroundColor: 'white',alignItems: 'center'}} >
