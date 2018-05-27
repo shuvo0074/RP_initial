@@ -2,98 +2,95 @@ import React from 'react';
 import { View,Text, StyleSheet, Dimensions } from 'react-native';
 import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+import QuizData from '../data/quizData'
+import { Button } from 'react-native-elements';
 
-class QuizComponent extends React.Component {
-    constructor (props){
-        super(props)
-        this.state = ({
-        })
-      }
-    
-      render(){
-          return(
-            <View>
-            <Text style={{fontWeight: 'bold', fontSize: 15}} >
-            {this.props.question}
-            </Text>
-            <Text style={{ fontSize: 15}} >
-            {this.props.answer}
-            </Text>
-            </View>
-
-          )
-      }
-}
-
-const initialLayout = {
-  height: 0,
-  width: Dimensions.get('window').width,
-};
-
-const FirstRoute = () => 
-<View style={[ styles.container, { backgroundColor: 'red' } ]} >
-<QuizComponent 
-question= "what 1 ?"
-answer= "answer 1"
-/>
-</View>
-const SecondRoute = () => <View style={[ styles.container, { backgroundColor: 'white' } ]} 
->
-<QuizComponent 
-question= "what 2 ?"
-answer= "answer 2"
-/>
-</View>
-const ThirdRoute = () => <View style={[ styles.container, { backgroundColor: 'red' } ]} 
->
-<QuizComponent 
-question= "what 3 ?"
-answer= "answer 3"
-/>
-</View>
-const FourthRoute = () => <View style={[ styles.container, { backgroundColor: 'white' } ]} 
->
-<QuizComponent 
-question= "what 4 ?"
-answer= "answer 4"
-/>
-</View>
 
 export default class quiz extends React.Component {
   state = {
-    index: 0,
-    routes: [
-      { key: 'first', title: 'Details' },
-      { key: 'second', title: 'QCard' },
-      { key: 'third', title: 'Quiz' },
-      { key: 'fourth', title: 'Quiz' },
-
-    ],
+    quizIndex: 0,
   };
 
-  _handleIndexChange = index => this.setState({ index });
-
-  _renderHeader = props => <TabBar {...props} />;
-
-  _renderScene = SceneMap({
-    first: FirstRoute,
-    second: SecondRoute,
-    third: ThirdRoute,
-    fourth: FourthRoute,
-  });
-
   render() {
+    if (QuizData[this.state.quizIndex+1]==null) {
+      return (
+        <View style ={{flex:1,alignItems: 'center', justifyContent: 'center'}} >
+        <View style={{backgroundColor: '#bdc3c7',marginTop:40, margin : 10, padding: 5,}} >
+          <Text style={{fontWeight: 'bold'}} >
+            Question {this.state.quizIndex+1} of {QuizData.length}
+          </Text>
+        </View>
+        <Text style={{fontWeight: 'bold', fontSize: 18}} >
+          {QuizData[this.state.quizIndex].question}
+        </Text>
+        <Text style={{ fontSize: 15}} >
+          {QuizData[this.state.quizIndex].answer}
+        </Text>
+        <View style={{flexDirection: 'row',flex: 1, alignItems: 'center', justifyContent: 'center'}} >
+        <Button title="previous" 
+        style= {{marginHorizontal: 25,}}
+        onPress= {()=>{
+          this.setState({quizIndex: this.state.quizIndex-1})
+        }} />
+        <Button title="Finish" 
+          style= {{marginHorizontal: 25,}}
+          onPress= {()=>{
+        }} />
+        </View>
+        </View>
+        )
+    }
+    else if (this.state.quizIndex==0){
+      return (
+        <View style ={{flex:1,alignItems: 'center', justifyContent: 'center'}} >
+        <View style={{backgroundColor: '#bdc3c7', margin : 10,marginTop:40, padding: 5,}} >
+          <Text style={{fontWeight: 'bold'}} >
+            Question {this.state.quizIndex+1} of {QuizData.length}
+          </Text>
+        </View>
+        <Text style={{fontWeight: 'bold', fontSize: 18}} >
+          {QuizData[this.state.quizIndex].question}
+        </Text>
+        <Text style={{ fontSize: 15}} >
+          {QuizData[this.state.quizIndex].answer}
+        </Text>
+        <View style={{flexDirection: 'row',flex: 1, alignItems: 'center', justifyContent: 'flex-end'}} >
+        <Button title="Next" 
+          style= {{marginHorizontal: 25,}}
+          onPress= {()=>{
+            this.setState({quizIndex: this.state.quizIndex+1})
+        }} />
+        </View>
+        </View>
+        )
+    }
     return (
-    <View style ={{flex:1}} >
-    <TabViewAnimated
-        navigationState={this.state}
-        renderScene={this._renderScene}
-        onIndexChange={this._handleIndexChange}
-        initialLayout={initialLayout}
-    >
-    </TabViewAnimated>
+    <View style ={{flex:1,alignItems: 'center', justifyContent: 'center'}} >
+    <View style={{backgroundColor: '#bdc3c7',marginTop:40, margin : 10, padding: 5,}} >
+      <Text style={{fontWeight: 'bold'}} >
+        Question {this.state.quizIndex+1} of {QuizData.length}
+      </Text>
     </View>
-    );
+    <Text style={{fontWeight: 'bold', fontSize: 18}} >
+      {QuizData[this.state.quizIndex].question}
+    </Text>
+    <Text style={{ fontSize: 15}} >
+      {QuizData[this.state.quizIndex].answer}
+    </Text>
+    <View style={{flexDirection: 'row',flex: 1, alignItems: 'center', justifyContent: 'center'}} >
+    <Button title="previous" 
+    style= {{marginHorizontal: 25,}}
+    onPress= {()=>{
+        this.setState({quizIndex: this.state.quizIndex-1})
+    }} />
+    <Button title="Next" 
+      style= {{marginHorizontal: 25,}}
+      onPress= {()=>{
+      this.setState({quizIndex: this.state.quizIndex+1})
+    }} />
+    </View>
+    </View>
+    )
   }
 }
 
