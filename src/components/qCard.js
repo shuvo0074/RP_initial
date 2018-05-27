@@ -2,125 +2,81 @@ import React from 'react';
 import { View,Text, StyleSheet, Dimensions } from 'react-native';
 import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
 import QCardData from '../data/qCardData'
-
-class QCardComponent extends React.Component {
-    constructor (props){
-        super(props)
-        this.state = ({
-        })
-      }
-    
-      render(){
-          return(
-            <View>
-            <Text style={{fontWeight: 'bold', fontSize: 15}} >
-            {this.props.question}
-            </Text>
-            <Text style={{ fontSize: 15}} >
-            {this.props.answer}
-            </Text>
-            </View>
-
-          )
-      }
-}
-
-const initialLayout = {
-  height: 0,
-  width: Dimensions.get('window').width,
-};
-
-const FirstRoute = () => 
-<View style={[ styles.container, { backgroundColor: 'red' } ]} >
-<QCardComponent 
-question= "what 1 ?"
-answer= "answer 1"
-/>
-</View>
-const SecondRoute = () => <View style={[ styles.container, { backgroundColor: 'white' } ]} 
->
-<QCardComponent 
-question= "what 2 ?"
-answer= "answer 2"
-/>
-</View>
-const ThirdRoute = () => <View style={[ styles.container, { backgroundColor: 'red' } ]} 
->
-<QCardComponent 
-question= "what 3 ?"
-answer= "answer 3"
-/>
-</View>
-const FourthRoute = () => <View style={[ styles.container, { backgroundColor: 'white' } ]} 
->
-<QCardComponent 
-question= "what 4 ?"
-answer= "answer 4"
-/>
-</View>
+import { Button } from 'react-native-elements';
 
 export default class qCard extends React.Component {
   state = {
-    index: 0,
-    routes: [
-      { key: 'first', title: 'Details' },
-      { key: 'second', title: 'QCard' },
-      { key: 'third', title: 'Quiz' },
-      { key: 'fourth', title: 'Quiz' },
-
-    ],
+    cardIndex: 0,
   };
-  renderCards(){
-    return(
-      <View>
-      <Text style={{fontWeight: 'bold', fontSize: 15}} >
-        {this.props.question}
-      </Text>
-      <Text style={{ fontSize: 15}} >
-        {this.props.answer}
-      </Text>
-      </View>
-    )
-  }
-
-  _handleIndexChange = index => this.setState({ index });
-
-  _renderHeader = props => <TabBar {...props} />;
-
-  _renderScene = SceneMap({
-    first: FirstRoute,
-    second: SecondRoute,
-    third: ThirdRoute,
-    fourth: FourthRoute,
-  });
 
   render() {
-    return (
-    <View style ={{flex:1}} >
-    {
-      QCardData.map((card,index)=> {
-      return(
-      <View>
-      <Text style={{fontWeight: 'bold', fontSize: 18}} >
-        {card.question}
-      </Text>
-      <Text style={{ fontSize: 15}} >
-        {card.answer}
-      </Text>
-      </View>
-      )
-      })
+    if (QCardData[this.state.cardIndex+1]==null) {
+      return (
+        <View style ={{flex:1,alignItems: 'center', justifyContent: 'center'}} >
+        
+        <Text style={{fontWeight: 'bold', fontSize: 18}} >
+          {QCardData[this.state.cardIndex].question}
+        </Text>
+        <Text style={{ fontSize: 15}} >
+          {QCardData[this.state.cardIndex].answer}
+        </Text>
+        <View style={{flexDirection: 'row',flex: 1, alignItems: 'center', justifyContent: 'center'}} >
+        <Button title="previous" 
+        style= {{marginHorizontal: 25,}}
+        onPress= {()=>{
+          this.setState({cardIndex: this.state.cardIndex-1})
+        }} />
+        <Button title="Finish" 
+          style= {{marginHorizontal: 25,}}
+          onPress= {()=>{
+        }} />
+        </View>
+        </View>
+        )
     }
+    else if (this.state.cardIndex==0){
+      return (
+        <View style ={{flex:1,alignItems: 'center', justifyContent: 'center'}} >
+        
+        <Text style={{fontWeight: 'bold', fontSize: 18}} >
+          {QCardData[this.state.cardIndex].question}
+        </Text>
+        <Text style={{ fontSize: 15}} >
+          {QCardData[this.state.cardIndex].answer}
+        </Text>
+        <View style={{flexDirection: 'row',flex: 1, alignItems: 'center', justifyContent: 'flex-end'}} >
+        <Button title="Next" 
+          style= {{marginHorizontal: 25,}}
+          onPress= {()=>{
+            this.setState({cardIndex: this.state.cardIndex+1})
+        }} />
+        </View>
+        </View>
+        )
+    }
+    return (
+    <View style ={{flex:1,alignItems: 'center', justifyContent: 'center'}} >
     
-    <TabViewAnimated
-        navigationState={this.state}
-        renderScene={this._renderScene}
-        onIndexChange={this._handleIndexChange}
-        initialLayout={initialLayout}
-    >
-    </TabViewAnimated>
+    <Text style={{fontWeight: 'bold', fontSize: 18}} >
+      {QCardData[this.state.cardIndex].question}
+    </Text>
+    <Text style={{ fontSize: 15}} >
+      {QCardData[this.state.cardIndex].answer}
+    </Text>
+    <View style={{flexDirection: 'row',flex: 1, alignItems: 'center', justifyContent: 'center'}} >
+    <Button title="previous" 
+    style= {{marginHorizontal: 25,}}
+    onPress= {()=>{
+        this.setState({cardIndex: this.state.cardIndex-1})
+    }} />
+    <Button title="Next" 
+      style= {{marginHorizontal: 25,}}
+      onPress= {()=>{
+      this.setState({cardIndex: this.state.cardIndex+1})
+    }} />
     </View>
-    );
+    </View>
+    )
   }
 }
 

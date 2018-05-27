@@ -51,7 +51,7 @@ export default class contact extends React.Component {
         </Text>
         <Button title="info@rangspharma.net" onPress={this.handleEmail} />
 
-        <Button onPress={this.callNumber}>
+        <Button title="+880-02-9123560" onPress={this.callNumber}>
             +880-02-9123560
         </Button>
       <MapView

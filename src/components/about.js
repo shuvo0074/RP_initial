@@ -80,19 +80,19 @@ export default class about extends React.Component {
           Bangladesh
           Phone:
         </Text>
-        <Button onPress={this.callNumber1}>
+        <Button title="+880247118757" onPress={this.callNumber1}>
             +880247118757
         </Button>
-        <Button onPress={this.callNumber2}>
+        <Button title="+880247118642" onPress={this.callNumber2}>
             +880247118642
         </Button>
         <Text>
           Mobile:
         </Text>
-        <Button onPress={this.callNumber3}>
+        <Button title="+8801819274289" onPress={this.callNumber3}>
             +8801819274289
         </Button>
-        <Button onPress={this.callNumber4}>
+        <Button title="+8801969105093" onPress={this.callNumber4}>
             +8801969105093
         </Button>
         <Text>
