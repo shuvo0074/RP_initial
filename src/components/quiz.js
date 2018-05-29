@@ -13,13 +13,13 @@ export default class quiz extends React.Component {
   state = {
     quizIndex: 0,
     selected: [],
-    iconSource: notSelIcon,
+    checked: null,
 
   };
   render() {
     if (QuizData[this.state.quizIndex+1]==null) {
       return (
-        <View style ={{flex:1,alignItems: 'center', justifyContent: 'center', backgroundColor: 'white',}} >
+        <View style ={{flex:1,paddingHorizontal: 20, justifyContent: 'center', backgroundColor: 'white',}} >
         <View style={{backgroundColor: '#bdc3c7',marginTop:40, margin : 10, padding: 5,}} >
           <Text style={{fontWeight: 'bold'}} >
             Question {this.state.quizIndex+1} of {QuizData.length}
@@ -29,31 +29,45 @@ export default class quiz extends React.Component {
           {QuizData[this.state.quizIndex].question}
         </Text>
         
-        <FlatList style={[styles.list,{width: this.state.W,}]}
-        data={QuizData[this.state.quizIndex].answer.split("~~")}
-        ref={'flist'}
-        renderItem={({item,index})=>
         {
-            return (
-              <TouchableOpacity
-              style={{flex:1, flexDirection: 'row'}}
+          QuizData[this.state.quizIndex].answer.split("~~").map((item,index)=>{
+            return(
+              <View>
+                {this.state.selected[this.state.quizIndex]==index ?
+                <TouchableOpacity
+                style={{ flexDirection: 'row'}}
+                
+                >
+                  <Image 
+                  source={require('../contents/quiz/quizSelected.png')} 
+                  style= {{height: 20, width: 20,}}
+                  />
+                  <Text style={{fontWeight: 'bold', fontSize: 20}} >  {item}   selected: {this.state.selected[this.state.quizIndex]}
+                  </Text>
+                </TouchableOpacity>
+                :
+                <TouchableOpacity
+              style={{ flexDirection: 'row'}}
               onPress={()=>{
                 arr[this.state.quizIndex]=index
                 this.setState({selected: arr})
-                this.setState({iconSource: selIcon})
+                this.setState({checked: index})
               }}
               >
                 <Image 
-                source={this.state.iconSource} 
-                //style= {{height: 70, width: 70, margin: 10, padding: 5,}}
+                source={require('../contents/quiz/quizNotSelected.png')} 
+                style= {{height: 20, width: 20, }}
                 />
-                <Text style={{fontWeight: 'bold', fontSize: 20}} >  {item}   selected: {this.state.selected[this.state.quizIndex]}
+                <Text style={{fontWeight: 'bold', fontSize: 20}} >  {item}
                 </Text>
               </TouchableOpacity>
+                }
+              </View>
             )
-        }}
-        >
-        </FlatList>
+          })
+        }
+
+
         <View style={{flexDirection: 'row',flex: 1, alignItems: 'center', justifyContent: 'center'}} >
         <Button title="previous" 
         style= {{marginHorizontal: 25,}}
@@ -70,7 +84,7 @@ export default class quiz extends React.Component {
     }
     else if (this.state.quizIndex==0){
       return (
-        <View style ={{flex:1,alignItems: 'center', justifyContent: 'center',backgroundColor: 'white',}} >
+        <View style ={{flex:1,paddingHorizontal: 20, justifyContent: 'center',backgroundColor: 'white',}} >
         <View style={{backgroundColor: '#bdc3c7', margin : 10,marginTop:40, padding: 5,}} >
           <Text style={{fontWeight: 'bold'}} >
             Question {this.state.quizIndex+1} of {QuizData.length}
@@ -80,32 +94,47 @@ export default class quiz extends React.Component {
           {QuizData[this.state.quizIndex].question}
         </Text>
         
-        <FlatList style={[styles.list,{width: this.state.W,}]}
-        data={QuizData[this.state.quizIndex].answer.split("~~")}
-        ref={'flist'}
-        renderItem={({item,index})=>
+
         {
-            return (
-              <TouchableOpacity
-              style={{flex:1, flexDirection: 'row'}}
+          QuizData[this.state.quizIndex].answer.split("~~").map((item,index)=>{
+            return(
+              <View>
+                {this.state.selected[this.state.quizIndex]==index ?
+                <TouchableOpacity
+                style={{ flexDirection: 'row'}}
+                
+                >
+                  <Image 
+                  source={require('../contents/quiz/quizSelected.png')} 
+                  style= {{height: 20, width: 20,}}
+                  />
+                  <Text style={{fontWeight: 'bold', fontSize: 20}} >  {item}   selected: {this.state.selected[this.state.quizIndex]}
+                  </Text>
+                </TouchableOpacity>
+                :
+                <TouchableOpacity
+              style={{ flexDirection: 'row'}}
               onPress={()=>{
                 arr[this.state.quizIndex]=index
                 this.setState({selected: arr})
-                this.setState({iconSource: selIcon})
+                this.setState({checked: index})
 
               }}
               >
                 <Image 
-                source={this.state.iconSource} 
-                //style= {{height: 70, width: 70, margin: 10, padding: 5,}}
+                source={require('../contents/quiz/quizNotSelected.png')} 
+                style= {{height: 20, width: 20, }}
                 />
-                <Text style={{fontWeight: 'bold', fontSize: 20}} >  {item}   selected: {this.state.selected[this.state.quizIndex]}
+                <Text style={{fontWeight: 'bold', fontSize: 20}} >  {item}  
                 </Text>
               </TouchableOpacity>
+                }
+              </View>
             )
-        }}
-        >
-        </FlatList>
+          })
+        }
+
+
         <View style={{flexDirection: 'row',flex: 1, alignItems: 'center', justifyContent: 'flex-end'}} >
         <Button title="Next" 
           style= {{marginHorizontal: 25,}}
@@ -117,7 +146,7 @@ export default class quiz extends React.Component {
         )
     }
     return (
-    <View style ={{flex:1,alignItems: 'center', justifyContent: 'center',backgroundColor: 'white',}} >
+    <View style ={{flex:1,paddingHorizontal: 20, justifyContent: 'center',backgroundColor: 'white',}} >
     <View style={{backgroundColor: '#bdc3c7',marginTop:40, margin : 10, padding: 5,}} >
       <Text style={{fontWeight: 'bold'}} >
         Question {this.state.quizIndex+1} of {QuizData.length}
@@ -127,32 +156,44 @@ export default class quiz extends React.Component {
       {QuizData[this.state.quizIndex].question}
     </Text>
     
-    <FlatList style={[styles.list,{width: this.state.W,}]}
-        data={QuizData[this.state.quizIndex].answer.split("~~")}
-        ref={'flist'}
-        renderItem={({item,index})=>
-        {
-            return (
-              <TouchableOpacity
-              style={{flex:1, flexDirection: 'row'}}
+    {
+          QuizData[this.state.quizIndex].answer.split("~~").map((item,index)=>{
+            return(
+              <View>
+                {this.state.selected[this.state.quizIndex]==index ?
+                <TouchableOpacity
+                style={{ flexDirection: 'row'}}
+                
+                >
+                  <Image 
+                  source={require('../contents/quiz/quizSelected.png')} 
+                  style= {{height: 20, width: 20,}}
+                  />
+                  <Text style={{fontWeight: 'bold', fontSize: 20}} >  {item}   selected: {this.state.selected[this.state.quizIndex]}
+                  </Text>
+                </TouchableOpacity>
+                :
+                <TouchableOpacity
+              style={{ flexDirection: 'row'}}
               onPress={()=>{
                 arr[this.state.quizIndex]=index
                 this.setState({selected: arr})
-                this.setState({iconSource: selIcon})
-
+                this.setState({checked: index})
               }}
               >
                 <Image 
-                source={this.state.iconSource} 
-                //style= {{height: 70, width: 70, margin: 10, padding: 5,}}
+                source={require('../contents/quiz/quizNotSelected.png')} 
+                style= {{height: 20, width: 20, }}
                 />
-                <Text style={{fontWeight: 'bold', fontSize: 20}} >  {item}   selected: {this.state.selected[this.state.quizIndex]}
+                <Text style={{fontWeight: 'bold', fontSize: 20}} >  {item}
                 </Text>
               </TouchableOpacity>
+                }
+              </View>
             )
-        }}
-        >
-        </FlatList>
+          })
+        }
+
     <View style={{flexDirection: 'row',flex: 1, alignItems: 'center', justifyContent: 'center'}} >
     <Button title="previous" 
     style= {{marginHorizontal: 25,}}

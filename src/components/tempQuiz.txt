@@ -177,3 +177,138 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+
+***/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*
+
+{
+          QuizData[this.state.quizIndex].answer.split("~~").map((data,i)=>{
+            return(
+              <View>
+                {this.state.selected[this.state.quizIndex]!=null ?
+                <TouchableOpacity
+                style={{flex:1, flexDirection: 'row'}}
+                onPress={()=>{
+                  arr[this.state.quizIndex]=index
+                  this.setState({selected: arr})
+                  this.setState({iconSource: selIcon})
+                }}
+                >
+                  <Image 
+                  source={selIcon} 
+                  style= {{height: 20, width: 20,}}
+                  />
+                  <Text style={{fontWeight: 'bold', fontSize: 20}} >  {item}   selected: {this.state.selected[this.state.quizIndex]}
+                  </Text>
+                </TouchableOpacity>
+                :
+                <TouchableOpacity
+              style={{flex:1, flexDirection: 'row'}}
+              onPress={()=>{
+                arr[this.state.quizIndex]=index
+                this.setState({selected: arr})
+                this.setState({iconSource: selIcon})
+              }}
+              >
+                <Image 
+                source={notSelIcon} 
+                style= {{height: 20, width: 20, }}
+                />
+                <Text style={{fontWeight: 'bold', fontSize: 20}} >  {item}   selected: {this.state.selected[this.state.quizIndex]}
+                </Text>
+              </TouchableOpacity>
+                }
+              </View>
+            )
+          })
+        }
+
+
+        /*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*
+ */*/*/*/*/
+
+ <FlatList style={[styles.list,{width: this.state.W,}]}
+        data={QuizData[this.state.quizIndex].answer.split("~~")}
+        ref={'flist'}
+        renderItem={({item,index})=>
+        {
+            return (
+              <TouchableOpacity
+              style={{flex:1, flexDirection: 'row'}}
+              onPress={()=>{
+                arr[this.state.quizIndex]=index
+                this.setState({selected: arr})
+                this.setState({iconSource: selIcon})
+              }}
+              >
+                <Image 
+                source={this.state.iconSource} 
+                //style= {{height: 70, width: 70, margin: 10, padding: 5,}}
+                />
+                <Text style={{fontWeight: 'bold', fontSize: 20}} >  {item}   selected: {this.state.selected[this.state.quizIndex]}
+                </Text>
+              </TouchableOpacity>
+            )
+        }}
+        >
+        </FlatList>
+
+        /*/*/*/*/*/*/*/*/*
+
+        
+        <FlatList style={[styles.list,{width: this.state.W,}]}
+        data={QuizData[this.state.quizIndex].answer.split("~~")}
+        ref={'flist'}
+        renderItem={({item,index})=>
+        {
+            return (
+              <TouchableOpacity
+              style={{flex:1, flexDirection: 'row'}}
+              onPress={()=>{
+                arr[this.state.quizIndex]=index
+                this.setState({selected: arr})
+                this.setState({iconSource: selIcon})
+
+              }}
+              >
+                <Image 
+                source={this.state.iconSource} 
+                //style= {{height: 70, width: 70, margin: 10, padding: 5,}}
+                />
+                <Text style={{fontWeight: 'bold', fontSize: 20}} >  {item}   selected: {this.state.selected[this.state.quizIndex]}
+                </Text>
+              </TouchableOpacity>
+            )
+        }}
+        >
+        </FlatList>
+
+        /*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
+
+        
+    <FlatList style={[styles.list,{width: this.state.W,}]}
+        data={QuizData[this.state.quizIndex].answer.split("~~")}
+        ref={'flist'}
+        renderItem={({item,index})=>
+        {
+            return (
+              <TouchableOpacity
+              style={{flex:1, flexDirection: 'row'}}
+              onPress={()=>{
+                arr[this.state.quizIndex]=index
+                this.setState({selected: arr})
+                this.setState({iconSource: selIcon})
+
+              }}
+              >
+                <Image 
+                source={this.state.iconSource} 
+                //style= {{height: 70, width: 70, margin: 10, padding: 5,}}
+                />
+                <Text style={{fontWeight: 'bold', fontSize: 20}} >  {item}   selected: {this.state.selected[this.state.quizIndex]}
+                </Text>
+              </TouchableOpacity>
+            )
+        }}
+        >
+        </FlatList>
