@@ -55,7 +55,11 @@ export default class products extends React.Component {
   render() {
     if (this.state.desc) {
       return (
-        <TabView id={ProductData[this.state.ind].details} />
+        <TabView id={ProductData[this.state.ind].details} 
+        logo={ProductData[this.state.ind].imageS} 
+        n={ProductData[this.state.ind].name}
+        d={ProductData[this.state.ind].desc}
+        />
       )
     }
     

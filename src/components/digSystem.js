@@ -54,7 +54,10 @@ export default class digSystem extends React.Component {
   render() {
     if (this.state.desc) {
       return (
-        <TabView id={DigSystemData[this.state.ind].details}/>
+        <TabView id={DigSystemData[this.state.ind].details}
+        logo={DigSystemData[this.state.ind].imageS}
+        n={DigSystemData[this.state.ind].name}
+        d={DigSystemData[this.state.ind].desc}/>
       )
     }
     

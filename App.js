@@ -18,14 +18,14 @@ export default class App extends Component<{}> {
   render() {
     return (
       <Router navigationBarStyle={styles.navBar}>
-      <Scene key="root" hideNavBar={false} >
+      <Scene key="root" hideNavBar={false}  >
       
       <Scene
       key="home"
       component={Home}
       title="Home"
       initial
-      hideNavBar={true}
+      hideNavBar={false}
       />
       
       <Scene
@@ -89,6 +89,7 @@ const styles = StyleSheet.create({
   },
   navBar: {
     marginTop: 23,
-    backgroundColor: 'red'
+    backgroundColor: 'red',
+    height: 50
   }
 });

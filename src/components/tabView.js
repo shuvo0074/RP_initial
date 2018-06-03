@@ -3,7 +3,6 @@ import { View,Text, StyleSheet,WebView , Dimensions,Image } from 'react-native';
 import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
 import QCard from './qCard'
 import Quiz from './quiz'
-var disease = require('../contents/htmlpages/ge_system.html')
 
 var ind = null
 const initialLayout = {
@@ -51,11 +50,19 @@ export default class tabView extends React.Component {
     ind = this.props.id
     return (
     <View style ={{flex:1}} >
-    <View style = {{height : 70,backgroundColor: 'white',alignItems: 'center'}} >
+    <View style = {{height : 70,backgroundColor: 'blue',alignItems: 'center',flexDirection: 'row'}} >
         <Image
-        source= {require('../contents/productImages/antif.jpg')}
-        style={{backgroundColor: 'white',flex: 1,}}
+        source= {this.props.logo}
+        style={{backgroundColor: 'blue',height:70,width:100}}
         />
+        <View style={{marginHorizontal:15}} >
+          <Text style={{fontSize:20,fontWeight:'bold'}}>
+            {this.props.n}
+          </Text>
+          <Text style={{fontSize:20,fontWeight:'bold'}}>
+            {this.props.d} 
+          </Text>
+        </View>
     </View>
     <TabViewAnimated
         navigationState={this.state}

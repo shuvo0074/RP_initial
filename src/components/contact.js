@@ -84,7 +84,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     alignItems: 'center',
-    marginTop: 20,
     top:0,
     left:0,
     bottom:0,
