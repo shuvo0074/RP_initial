@@ -62,9 +62,6 @@ export default class products extends React.Component {
     return (
 
       <View style={[styles.container,{width: this.state.W}]}>        
-        <Text>
-        {ProductData[1].name}
-        </Text>
         <FlatList style={[styles.list,{width: this.state.W,}]}
         data={ProductData}
         ref={'flist'}
@@ -83,6 +80,8 @@ export default class products extends React.Component {
         }}
         >
         </FlatList>
+        <View style={{height: 10}} >
+        </View>
       </View>
     );
   }
@@ -92,7 +91,6 @@ const styles = StyleSheet.create({
   container: {
     flex:1,
     backgroundColor: 'white',
-    marginTop: 22,
   },
   list: {
     flex: 1,

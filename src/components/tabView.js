@@ -51,7 +51,7 @@ export default class tabView extends React.Component {
     ind = this.props.id
     return (
     <View style ={{flex:1}} >
-    <View style = {{height : 70,marginTop: 25,backgroundColor: 'white',alignItems: 'center'}} >
+    <View style = {{height : 70,backgroundColor: 'white',alignItems: 'center'}} >
         <Image
         source= {require('../contents/productImages/antif.jpg')}
         style={{backgroundColor: 'white',flex: 1,}}

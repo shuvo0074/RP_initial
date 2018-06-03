@@ -17,26 +17,27 @@ import Help from './src/components/help'
 export default class App extends Component<{}> {
   render() {
     return (
-      <Router>
-      <Scene key="root" hideNavBar={true} >
+      <Router navigationBarStyle={styles.navBar}>
+      <Scene key="root" hideNavBar={false} >
       
       <Scene
       key="home"
       component={Home}
-      title="home"
+      title="Home"
       initial
+      hideNavBar={true}
       />
       
       <Scene
       key="products"
       component={Products}
-      title="products"
+      title="Products"
       />
       
       <Scene
       key="digSystem"
       component={DigSystem}
-      title="digSystem"
+      title="Digestive system"
       />
       
       <Scene
@@ -86,4 +87,8 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  navBar: {
+    marginTop: 23,
+    backgroundColor: 'red'
+  }
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity,FlatList,Dimensions,Image,Alert,TouchableHighlight,ScrollView,Platform } from 'react-native';
+import { StyleSheet,StatusBar, Text, View, TouchableOpacity,FlatList,Dimensions,Image,Alert,TouchableHighlight,ScrollView,Platform } from 'react-native';
 import { Actions} from 'react-native-router-flux'
 
 
@@ -53,7 +53,10 @@ export default class home extends React.Component {
   render() {
     return (
     <ScrollView contentContainerStyle={styles.container}>
-
+    <StatusBar
+    color= 'red'
+    //hidden={true}    
+    />
     <TouchableOpacity
       onPress={this.onPressProductsButton}
       >
@@ -143,7 +146,8 @@ export default class home extends React.Component {
         </View>
       </View>
       </TouchableOpacity>
-
+      <View style={{height: 50}} >
+      </View>
     
     </ScrollView>
     );

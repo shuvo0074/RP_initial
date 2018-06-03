@@ -61,9 +61,7 @@ export default class digSystem extends React.Component {
     return (
 
       <View style={[styles.container,{width: this.state.W}]}>        
-        <Text>
-        {DigSystemData[1].name}
-        </Text>
+
         <FlatList style={[styles.list,{width: this.state.W,}]}
         data={DigSystemData}
         ref={'flist'}
@@ -82,6 +80,8 @@ export default class digSystem extends React.Component {
         }}
         >
         </FlatList>
+        <View style={{height: 100}} >
+        </View>
       </View>
     );
   }
@@ -91,7 +91,6 @@ const styles = StyleSheet.create({
   container: {
     flex:1,
     backgroundColor: 'white',
-    marginTop: 22,
   },
   list: {
     flex: 1,
