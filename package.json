@@ -39,6 +39,7 @@
     "react-native-simple-radio-button": "^2.7.1",
     "react-native-sqlite-storage": "^3.3.4",
     "react-native-swipeout": "^2.3.3",
-    "react-native-tab-view": "0.0.77"
+    "react-native-tab-view": "0.0.77",
+    "react-navigation": "^2.0.4"
   }
 }
