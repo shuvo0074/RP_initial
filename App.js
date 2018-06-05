@@ -13,6 +13,7 @@ import Quiz from './src/components/quiz'
 import Contact from './src/components/contact'
 import About from './src/components/about'
 import Help from './src/components/help'
+import HumanBodyparts from './src/components/humanBodyparts'
 
 export default class App extends Component<{}> {
   render() {
@@ -34,6 +35,12 @@ export default class App extends Component<{}> {
       title="Products"
       />
       
+      <Scene
+      key="humanBodyparts"
+      component={HumanBodyparts}
+      title="Human Body parts"
+      />
+
       <Scene
       key="digSystem"
       component={DigSystem}

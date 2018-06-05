@@ -1,27 +1,53 @@
 import React from 'react';
-import { View,Text, StyleSheet,Image,FlatList,TouchableOpacity, Dimensions } from 'react-native';
+import { View,Text, StyleSheet,Image,FlatList,ScrollView,TouchableOpacity, Dimensions } from 'react-native';
 import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import QuizData from '../data/quizData'
 import { Button } from 'react-native-elements';
 
+const isPortrait = () => {
+  const dim = Dimensions.get('screen');
+  return dim.height >= dim.width;
+}
 
 let arr=[]
 var arr2=[]
-export default class quiz extends React.Component {
+export default class quizComponent extends React.Component {
   
+  constructor (props){
+    super(props)
+    this.state = ({
+      quizIndex: 0,
+      selected: [],
+      checked: null,
+      W: Dimensions.get('window').width,
+      H: Dimensions.get('window').height,
+
+        })
+      Dimensions.addEventListener('change', () => {
+        this.setState({
+        W: Dimensions.get('window').width,
+        H: Dimensions.get('window').height
+
+      });
+      })
+    //this._onPressAdd = this._onPressAdd.bind (this)
+  }
+
   state = {
     quizIndex: 0,
     selected: [],
     checked: null,
+    W: Dimensions.get('window').width,
+    H: Dimensions.get('window').height,
 
   };
   render() {
       arr=this.state.selected
       arr2=QuizData[this.state.quizIndex].answer.split("~~")
       return (
-        <View style ={{flex:1,paddingHorizontal: 20, justifyContent: 'center', backgroundColor: 'white',}} >
-        <View style={{backgroundColor: '#bdc3c7',marginTop:40, margin : 10, padding: 5,}} >
+        <View style ={{flex:1,paddingHorizontal: 20, justifyContent: 'flex-end', backgroundColor: 'white',}} >
+        <View style={{backgroundColor: '#bdc3c7', margin : 2, padding: 10,}} >
           <Text style={{fontWeight: 'bold'}} >
             Question {this.state.quizIndex+1} of {QuizData.length}
           </Text>
@@ -30,10 +56,11 @@ export default class quiz extends React.Component {
           {QuizData[this.state.quizIndex].question} 
         </Text>
 
+        <ScrollView style={{height: this.state.H/2 }} >
         {
           arr2.map((item,index)=>{
             return(
-              <View>
+              <View style={{marginBottom:2}} >
                 {
                   
                   this.state.selected[this.state.quizIndex]==index ?
@@ -69,7 +96,7 @@ export default class quiz extends React.Component {
             )
           })
         }
-
+        </ScrollView>
 
         {
           this.state.selected[this.state.quizIndex]==null?
@@ -98,9 +125,9 @@ export default class quiz extends React.Component {
 
         {
           QuizData[this.state.quizIndex+1]==null?
-          <View style={{flexDirection: 'row',flex: 1, alignItems: 'center', justifyContent: 'center'}} >
+          <View style={{flexDirection: 'row', alignItems: 'center',paddingVertical:7, justifyContent: 'center'}} >
         <TouchableOpacity 
-        style= {styles.buttonStyle}
+        style= {[styles.buttonStyle,{ width: ((this.state.W/2) - 20) }]}
         onPress= {()=>{
           this.setState({quizIndex: this.state.quizIndex-1})
         }} >
@@ -109,7 +136,7 @@ export default class quiz extends React.Component {
         </Text>
         </TouchableOpacity>
         <TouchableOpacity  
-          style= {styles.buttonStyle}
+          style= {[styles.buttonStyle,{width: ((this.state.W/2) - 20) }]}
           onPress= {()=>{
         }} >
         <Text>
@@ -119,9 +146,9 @@ export default class quiz extends React.Component {
         </View>
           :
             this.state.quizIndex==0?
-            <View style={{flexDirection: 'row',flex: 1, alignItems: 'center', justifyContent: 'center'}} >
+            <View style={{flexDirection: 'row', alignItems: 'center',paddingVertical:7, justifyContent: 'center'}} >
             <TouchableOpacity 
-            style= {styles.buttonStyle}
+            style= {[styles.buttonStyle,{marginLeft:((this.state.W/2)), width: ((this.state.W/2) - 20) }]}
             onPress= {()=>{
             this.setState({quizIndex: this.state.quizIndex+1})
             }} >
@@ -131,9 +158,9 @@ export default class quiz extends React.Component {
             </TouchableOpacity>
             </View>
             :
-            <View style={{flexDirection: 'row',flex: 1, alignItems: 'center', justifyContent: 'center'}} >
+            <View style={{flexDirection: 'row', alignItems: 'center',paddingVertical:7, justifyContent: 'center'}} >
             <TouchableOpacity 
-            style= {styles.buttonStyle}
+            style= {[styles.buttonStyle,{width: ((this.state.W/2) - 20) }]}
             onPress= {()=>{
               this.setState({quizIndex: this.state.quizIndex-1})
             }} >
@@ -142,7 +169,7 @@ export default class quiz extends React.Component {
             </Text>
             </TouchableOpacity>
             <TouchableOpacity 
-            style= {styles.buttonStyle}
+            style= {[styles.buttonStyle,{width: ((this.state.W/2) - 20) }]}
             onPress= {()=>{
             this.setState({quizIndex: this.state.quizIndex+1})
             }} >
@@ -173,6 +200,7 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     padding: 25,
     borderWidth:2,
+    borderRadius:10,
     borderColor: '#747d8c',
     marginHorizontal: 8,
     backgroundColor: '#a4b0be'

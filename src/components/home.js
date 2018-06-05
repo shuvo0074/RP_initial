@@ -8,23 +8,16 @@ const isPortrait = () => {
   return dim.height >= dim.width;
 };
 
-let H=isPortrait() ? Dimensions.get('window').height : Dimensions.get('window').width
 
-const isLandscape = () => {
-  const dim = Dimensions.get('screen');
-  return dim.width >= dim.height;
-}
 
 export default class home extends React.Component {
   constructor (props){
     super(props)
     this.state = ({
-      orientation: isPortrait() ? 'portrait' : 'landscape',
       W: Dimensions.get('window').width
         })
       Dimensions.addEventListener('change', () => {
         this.setState({
-        orientation: isPortrait() ? 'portrait' : 'landscape',
         W: Dimensions.get('window').width
       });
       })
@@ -35,7 +28,7 @@ export default class home extends React.Component {
     Actions.products()
   }
   onPressDigSysButton(){
-    Actions.digSystem()
+    Actions.humanBodyparts()
   }
   onPressQuizButton(){
     Actions.quiz()
