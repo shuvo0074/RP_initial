@@ -1,13 +1,15 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity,FlatList,Dimensions,Image,Alert,TouchableHighlight,ScrollView } from 'react-native';
 import { Actions} from 'react-native-router-flux'
-import { Button } from 'react-native-elements';
 import MapView from 'react-native-maps';
 import email from 'react-native-email';
+import call from 'react-native-phone-call'
 
 
-var Call = require('@remobile/react-native-call');
-
+const args = {
+  number: '+880029123560', // String value with the number to call
+  prompt: false // Optional boolean property. Determines if the user should be prompt prior to the call 
+}
 export default class contact extends React.Component {
   constructor (props){
     super(props)
@@ -15,11 +17,7 @@ export default class contact extends React.Component {
     })
   }
   callNumber() {
-    Call.callNumber(()=>{
-      }, ()=>{},
-      "+880029123560",
-      true,
-    );
+    call(args).catch(console.error)
   }
   handleEmail = () => {
     const to = ['info@era.com.bd', 'info@era.com.bd'] 
@@ -29,7 +27,7 @@ export default class contact extends React.Component {
         subject: 'Email',
         body: 'Some body right here'
     }).catch(console.error)
-}
+  }
 
   render() {
     return (
@@ -49,11 +47,15 @@ export default class contact extends React.Component {
           Dhaka-1215,Bangladesh.
           Contact to HR and Admin:
         </Text>
-        <Button title="info@rangspharma.net" onPress={this.handleEmail} />
 
-        <Button title="+880-02-9123560" onPress={this.callNumber}>
-            +880-02-9123560
-        </Button>
+        <TouchableOpacity onPress={this.handleEmail} style={styles.buttonStyle}>
+            <Text>info@rangspharma.net</Text>
+        </TouchableOpacity>
+        
+        <TouchableOpacity onPress={this.callNumber} style={styles.buttonStyle}>
+            <Text>+880029123560</Text>
+        </TouchableOpacity>
+
       <MapView
           style={[styles.map,{height: 300, width : 350}]}
           initialRegion={{
@@ -68,8 +70,8 @@ export default class contact extends React.Component {
             latitude: 23.764785,
             longitude:90.389719
           }}
-          title={'title'}
-          description={'description'}
+          title={'Rangs Pharmaceuticals'}
+          description={'Rangs Pharmaceuticals'}
         />
         </MapView>
       </ScrollView>
@@ -114,13 +116,15 @@ const styles = StyleSheet.create({
     },
     buttonStyle: {
       margin: 10,
-      height: 30,
-      width: 80,
-      borderWidth: 3,
+      height: 50,
+      borderWidth: 2,
       borderColor: '#192a56',
-      borderRadius: 5,
-      backgroundColor: '#1e3799',
-      paddingTop: 2,
+      borderRadius: 3,
+      padding: 5,
+      borderColor: '#747d8c',
+      backgroundColor: '#a4b0be',
+      justifyContent: 'center',
+      marginHorizontal: 40,
       },
     buttonFonts: {
       fontWeight: 'bold',

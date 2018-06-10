@@ -1,11 +1,26 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity,FlatList,Dimensions,Image,Alert,TouchableHighlight,ScrollView } from 'react-native';
 import { Actions} from 'react-native-router-flux'
-import { Button } from 'react-native-elements';
 import email from 'react-native-email';
+import call from 'react-native-phone-call'
 
 
-var Call = require('@remobile/react-native-call');
+const args1 = {
+  number: '+880247118757', // String value with the number to call
+  prompt: false // Optional boolean property. Determines if the user should be prompt prior to the call 
+}
+const args2 = {
+  number: '+880247118642', // String value with the number to call
+  prompt: false // Optional boolean property. Determines if the user should be prompt prior to the call 
+}
+const args3 = {
+  number: '+8801819274289', // String value with the number to call
+  prompt: false // Optional boolean property. Determines if the user should be prompt prior to the call 
+}
+const args4 = {
+  number: '+8801969105093', // String value with the number to call
+  prompt: false // Optional boolean property. Determines if the user should be prompt prior to the call 
+}
 
 export default class about extends React.Component {
   constructor (props){
@@ -14,33 +29,18 @@ export default class about extends React.Component {
     })
   }
   callNumber1() {
-    Call.callNumber(()=>{
-      }, ()=>{},
-      "+880247118757",
-      true,
-    );
+    call(args1).catch(console.error)
   }
   callNumber2() {
-    Call.callNumber(()=>{
-      }, ()=>{},
-      "+880247118642",
-      true,
-    );
+    call(args2).catch(console.error)
   }
   callNumber3() {
-    Call.callNumber(()=>{
-      }, ()=>{},
-      "+8801819274289",
-      true,
-    );
+    call(args3).catch(console.error)
   }
   callNumber4() {
-    Call.callNumber(()=>{
-      }, ()=>{},
-      "+8801969105093",
-      true,
-    );
+    call(args4).catch(console.error)
   }
+  
   handleEmail = () => {
     const to = ['info@era.com.bd', 'info@era.com.bd'] // string or array of email addresses
     email(to, {
@@ -80,29 +80,38 @@ export default class about extends React.Component {
           Bangladesh
           Phone:
         </Text>
-        <Button title="+880247118757" onPress={this.callNumber1}>
+        <TouchableOpacity onPress={this.callNumber1} style={styles.buttonStyle}>
+          <Text>
             +880247118757
-        </Button>
-        <Button title="+880247118642" onPress={this.callNumber2}>
-            +880247118642
-        </Button>
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.callNumber2} style={styles.buttonStyle}>
+            <Text>+880247118642</Text>
+        </TouchableOpacity>
         <Text>
           Mobile:
         </Text>
-        <Button title="+8801819274289" onPress={this.callNumber3}>
-            +8801819274289
-        </Button>
-        <Button title="+8801969105093" onPress={this.callNumber4}>
-            +8801969105093
-        </Button>
+        <TouchableOpacity onPress={this.callNumber3} style={styles.buttonStyle}>
+            <Text>+8801819274289</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.callNumber4} style={styles.buttonStyle}>
+            <Text>+8801969105093</Text>
+        </TouchableOpacity>
         <Text>
           E-mail:
         </Text>
-        <Button title="info@era.com.bd" onPress={this.handleEmail} />
+        <TouchableOpacity onPress={this.handleEmail} style={styles.buttonStyle}>
+        <Text>
+        info@era.com.bd
+        </Text>
+        </TouchableOpacity>
         <Text>
           Website:
           www.erainfotechbd.com
         </Text>
+      </View>
+      <View style= {{height: 40}}>
+
       </View>
 
       </ScrollView>
@@ -114,7 +123,6 @@ let W=Dimensions.get('window').width
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
@@ -141,14 +149,16 @@ const styles = StyleSheet.create({
       alignItems: 'center', 
     },
     buttonStyle: {
-      margin: 10,
-      height: 30,
-      width: 80,
-      borderWidth: 3,
+      margin: 5,
+      height: 50,
+      borderWidth: 2,
       borderColor: '#192a56',
-      borderRadius: 5,
-      backgroundColor: '#1e3799',
-      paddingTop: 2,
+      borderRadius: 3,
+      padding: 5,
+      borderColor: '#747d8c',
+      backgroundColor: '#a4b0be',
+      justifyContent: 'center',
+      marginHorizontal: 40,
       },
     buttonFonts: {
       fontWeight: 'bold',
