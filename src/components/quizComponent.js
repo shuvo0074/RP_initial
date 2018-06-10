@@ -1,9 +1,7 @@
 import React from 'react';
 import { View,Text, StyleSheet,Image,FlatList,ScrollView,TouchableOpacity, Dimensions } from 'react-native';
 import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
-import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import QuizData from '../data/quizData'
-import { Button } from 'react-native-elements';
 
 const isPortrait = () => {
   const dim = Dimensions.get('screen');
@@ -34,14 +32,6 @@ export default class quizComponent extends React.Component {
     //this._onPressAdd = this._onPressAdd.bind (this)
   }
 
-  state = {
-    quizIndex: 0,
-    selected: [],
-    checked: null,
-    W: Dimensions.get('window').width,
-    H: Dimensions.get('window').height,
-
-  };
   render() {
       arr=this.state.selected
       arr2=QuizData[this.state.quizIndex].answer.split("~~")
@@ -125,7 +115,7 @@ export default class quizComponent extends React.Component {
 
         {
           QuizData[this.state.quizIndex+1]==null?
-          <View style={{flexDirection: 'row', alignItems: 'center',paddingVertical:7, justifyContent: 'center'}} >
+          <View style={styles.buttonContainer} >
         <TouchableOpacity 
         style= {[styles.buttonStyle,{ width: ((this.state.W/2) - 20) }]}
         onPress= {()=>{
@@ -146,7 +136,7 @@ export default class quizComponent extends React.Component {
         </View>
           :
             this.state.quizIndex==0?
-            <View style={{flexDirection: 'row', alignItems: 'center',paddingVertical:7, justifyContent: 'center'}} >
+            <View style={styles.buttonContainer} >
             <TouchableOpacity 
             style= {[styles.buttonStyle,{marginLeft:((this.state.W/2)), width: ((this.state.W/2) - 20) }]}
             onPress= {()=>{
@@ -158,7 +148,7 @@ export default class quizComponent extends React.Component {
             </TouchableOpacity>
             </View>
             :
-            <View style={{flexDirection: 'row', alignItems: 'center',paddingVertical:7, justifyContent: 'center'}} >
+            <View style={styles.buttonContainer} >
             <TouchableOpacity 
             style= {[styles.buttonStyle,{width: ((this.state.W/2) - 20) }]}
             onPress= {()=>{
@@ -204,5 +194,11 @@ const styles = StyleSheet.create({
     borderColor: '#747d8c',
     marginHorizontal: 8,
     backgroundColor: '#a4b0be'
+  },
+  buttonContainer: {
+    flexDirection: 'row', 
+    alignItems: 'center',
+    paddingVertical:7, 
+    justifyContent: 'center'
   },
 });

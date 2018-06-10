@@ -74,8 +74,8 @@ export default class home extends React.Component {
         style= {{height: 70, width: 70, margin: 10, padding: 5,}}
         />
         <View style={{width: this.state.W-110}} >
-          <Text style={styles.listItemFonts}>Digestive system</Text>
-          <Text>Human digestive system</Text>
+          <Text style={styles.listItemFonts}>Anatomy</Text>
+          <Text>Human body parts</Text>
         </View>
       </View>
       </TouchableOpacity>

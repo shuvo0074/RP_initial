@@ -1,31 +1,25 @@
-var imSourcea1= require('../contents/htmlpages/pic.png')
-var imSourcea2= require('../contents/htmlpages/digestion.png')
-var imSourcea3= require('../contents/htmlpages/disease.png')
-var dSys = require('../contents/htmlpages/digestive_system.html')
-var digestion = require('../contents/htmlpages/digestion.html')
-var disease = require('../contents/htmlpages/ge_system.html')
 
 var homeData = [
     {
         "key":"a1",
         "name":"Digestive System",
-        "imageS": imSourcea1 ,
+        "imageS": require('../contents/htmlpages/pic.png') ,
         "desc":"All products ",
-        "details": dSys,
+        "details": require('../contents/htmlpages/digestive_system.html'),
     },
     {
         "key":"a2",
         "name":"Digestion",
-        "imageS": imSourcea2 ,
+        "imageS": require('../contents/htmlpages/digestion.png') ,
         "desc":"Human digestive ",
-        "details": digestion,
+        "details": require('../contents/htmlpages/digestion.html'),
     },
     {
         "key":"a3",
         "name":"Disese of GE system",
-        "imageS": imSourcea3 ,
+        "imageS": require('../contents/htmlpages/disease.png') ,
         "desc":"Overall ",
-        "details": disease,
+        "details": require('../contents/htmlpages/ge_system.html'),
     },  
 ]
 export default homeData;

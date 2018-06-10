@@ -1,82 +1,103 @@
 import React from 'react';
-import { View,Text, StyleSheet, Dimensions } from 'react-native';
+import { View,Text, StyleSheet,ScrollView,TouchableOpacity, Dimensions } from 'react-native';
 import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
 import QCardData from '../data/qCardData'
-import { Button } from 'react-native-elements';
 
 export default class qCard extends React.Component {
-  state = {
-    cardIndex: 0,
-  };
+  constructor (props){
+    super(props)
+    this.state = ({
+      cardIndex: 0,
+      W: Dimensions.get('window').width,
+      H: Dimensions.get('window').height,
+
+        })
+      Dimensions.addEventListener('change', () => {
+        this.setState({
+        W: Dimensions.get('window').width,
+        H: Dimensions.get('window').height
+
+      });
+      })
+    //this._onPressAdd = this._onPressAdd.bind (this)
+  }
 
   render() {
-    if (QCardData[this.state.cardIndex+1]==null) {
+ 
       return (
         <View style ={{flex:1,alignItems: 'center', justifyContent: 'center'}} >
         
+        <ScrollView style={{height: this.state.H/2 }} >
+
         <Text style={{fontWeight: 'bold', fontSize: 18}} >
           {QCardData[this.state.cardIndex].question}
         </Text>
         <Text style={{ fontSize: 15}} >
           {QCardData[this.state.cardIndex].answer}
         </Text>
-        <View style={{flexDirection: 'row',flex: 1, alignItems: 'center', justifyContent: 'center'}} >
-        <Button title="previous" 
-        style= {{marginHorizontal: 25,}}
+        </ScrollView>
+
+        {
+          QCardData[this.state.cardIndex+1]==null?
+        <View style={styles.buttonContainer} >
+        <TouchableOpacity 
+        style= {[styles.buttonStyle,{ width: ((this.state.W/2) - 20) }]}
         onPress= {()=>{
           this.setState({cardIndex: this.state.cardIndex-1})
-        }} />
-        <Button title="Finish" 
-          style= {{marginHorizontal: 25,}}
-          onPress= {()=>{
-        }} />
-        </View>
-        </View>
-        )
-    }
-    else if (this.state.cardIndex==0){
-      return (
-        <View style ={{flex:1,alignItems: 'center', justifyContent: 'center'}} >
-        
-        <Text style={{fontWeight: 'bold', fontSize: 18}} >
-          {QCardData[this.state.cardIndex].question}
+        }} >
+        <Text>
+        Previous
         </Text>
-        <Text style={{ fontSize: 15}} >
-          {QCardData[this.state.cardIndex].answer}
-        </Text>
-        <View style={{flexDirection: 'row',flex: 1, alignItems: 'center', justifyContent: 'flex-end'}} >
-        <Button title="Next" 
-          style= {{marginHorizontal: 25,}}
+        </TouchableOpacity>
+        <TouchableOpacity  
+          style= {[styles.buttonStyle,{width: ((this.state.W/2) - 20) }]}
           onPress= {()=>{
+        }} >
+        <Text>
+        Finish
+        </Text>
+        </TouchableOpacity>
+        </View>
+        :
+          this.state.cardIndex==0?
+          <View style={styles.buttonContainer} >
+            <TouchableOpacity 
+            style= {[styles.buttonStyle,{marginLeft:((this.state.W/2)), width: ((this.state.W/2) - 20) }]}
+            onPress= {()=>{
             this.setState({cardIndex: this.state.cardIndex+1})
-        }} />
-        </View>
+            }} >
+            <Text>
+            Next
+            </Text>
+            </TouchableOpacity>
+            </View>
+          :
+          <View style={styles.buttonContainer} >
+          <TouchableOpacity 
+            style= {[styles.buttonStyle,{width: ((this.state.W/2) - 20) }]}
+            onPress= {()=>{
+              this.setState({cardIndex: this.state.cardIndex-1})
+            }} >
+            <Text>
+            Previous
+            </Text>
+            </TouchableOpacity>
+            <TouchableOpacity 
+            style= {[styles.buttonStyle,{width: ((this.state.W/2) - 20) }]}
+            onPress= {()=>{
+            this.setState({cardIndex: this.state.cardIndex+1})
+            }} >
+            <Text>
+            Next
+            </Text>
+            </TouchableOpacity>
+          </View>
+        }
         </View>
         )
-    }
-    return (
-    <View style ={{flex:1,alignItems: 'center', justifyContent: 'center'}} >
     
-    <Text style={{fontWeight: 'bold', fontSize: 18}} >
-      {QCardData[this.state.cardIndex].question}
-    </Text>
-    <Text style={{ fontSize: 15}} >
-      {QCardData[this.state.cardIndex].answer}
-    </Text>
-    <View style={{flexDirection: 'row',flex: 1, alignItems: 'center', justifyContent: 'center'}} >
-    <Button title="previous" 
-    style= {{marginHorizontal: 25,}}
-    onPress= {()=>{
-        this.setState({cardIndex: this.state.cardIndex-1})
-    }} />
-    <Button title="Next" 
-      style= {{marginHorizontal: 25,}}
-      onPress= {()=>{
-      this.setState({cardIndex: this.state.cardIndex+1})
-    }} />
-    </View>
-    </View>
-    )
+    
+    
   }
 }
 
@@ -86,5 +107,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'white'
+  },
+  buttonContainer: {
+    flexDirection: 'row', 
+    alignItems: 'center',
+    paddingVertical:7, 
+    justifyContent: 'center'
+  },
+  buttonStyle:{
+    justifyContent: 'center',
+    height: 25,
+    borderRadius: 3,
+    padding: 25,
+    borderWidth:2,
+    borderRadius:10,
+    borderColor: '#747d8c',
+    marginHorizontal: 8,
+    backgroundColor: '#a4b0be'
   },
 });
